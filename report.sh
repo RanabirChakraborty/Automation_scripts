@@ -1,6 +1,9 @@
 #!/bin/bash
-#To get a full report of your system
-
+# ------------------------------------------------------------------------ #
+# Script Name:   report.sh 
+# Description:   An interactive tool to check the deatils of your system.
+# Written by:    Ranabir Chakraborty
+# ------------------------------------------------------------------------ #
 
 
 function menuprincipal () {
