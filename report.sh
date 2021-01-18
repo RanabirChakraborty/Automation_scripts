@@ -1,10 +1,10 @@
 #!/bin/bash
 # ------------------------------------------------------------------------ #
-# Script Name:   report.sh 
+# Script Name:   report.sh
 # Description:   An interactive tool to check the deatils of your system.
 # Written by:    Ranabir Chakraborty
 # ------------------------------------------------------------------------ #
-
+set -euo pipefail
 
 function menuprincipal () {
 
@@ -13,11 +13,11 @@ red="\033[31;40m"
 none="\033[0m"
 
 clear
-TIME=1
+readonly TIME=1
 echo " "
-echo $0
+echo "${0}"
 echo " "
-echo -e $flashed"Hello,$USER"$none$red" hope you are doing good! Let's interact with me."$none
+echo -e "${flashed}Hello,${USER}"${none}${red}" hope you are doing good! Let's interact with me."$none
 echo "Choose an option below!
         1 - Verify desktop processor
 	2 - Verify system kernel
@@ -32,12 +32,12 @@ echo "Choose an option below!
 echo " "
 echo -n "Chosen option: "
 read opcao
-case $opcao in
+case "${opcao}" in
 	1)
 		function processador () {
-			CPU_INFO=`cat /proc/cpuinfo | grep -i "^model name" | cut -d ":" -f2 | sed -n '1p'`
-			echo "CPU model: $CPU_INFO"
-			sleep $TIME
+            CPU_INFO=$(cat /proc/cpuinfo | grep -i "^model name" | cut -d ":" -f2 | sed -n '1p')
+			echo "CPU model: ${CPU_INFO}"
+			sleep ${TIME}
 		}
 		processador
 		read -n 1 -p "<Enter> for main menu"
@@ -47,8 +47,8 @@ case $opcao in
 	2)
 		function kernel () {
 			#RED HAT: cat /etc/redhat-release
-			KERNEL_VERSION_UBUNTU=`uname -r`
-			KERNEL_VERSION_CENTOS=`uname -r`
+            KERNEL_VERSION_UBUNTU=$(uname -r)
+            KERNEL_VERSION_CENTOS=$(uname -r)
 			if [ -f /etc/lsb-release ]
 			then
 				echo "kernel version: $KERNEL_VERSION_UBUNTU"
@@ -130,23 +130,23 @@ case $opcao in
 			TIME=3
 			echo " "
 			echo "Choose an option below for program's list!
-			
+
 			1 - Who is online ?
 			2 - Who are the last logged in users
 			4 - Back to menu"
 			echo " "
 			echo -n "Chosen option: "
 			read alternative
-			case "$alternative" in 
-				1) write_header " Who is online " 
-				   who -H 
+			case "$alternative" in
+				1) write_header " Who is online "
+				   who -H
 			           sleep $TIME
 				   ;;
 				2) write_header " List of last logged in users "
 				   last
-				   sleep $TIME 
+				   sleep $TIME
 				   ;;
-			esac 
+			esac
 		}
 		serial
 		read -n 1 -p "<Enter> for main menu"
@@ -164,7 +164,7 @@ case $opcao in
 		;;
 
 	8)
-		function size () { 
+		function size () {
 			echo -n "Enter your directory: "
                 	read -r x
 			echo -n "output a specified directory's size"
