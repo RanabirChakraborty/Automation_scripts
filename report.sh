@@ -13,7 +13,7 @@ red="\033[31;40m"
 none="\033[0m"
 
 clear
-readonly TIME=1
+TIME=${TIME:-'1'}
 echo " "
 echo "${0}"
 echo " "
