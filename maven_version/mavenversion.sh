@@ -23,7 +23,7 @@ mvnv()
         fi
 }
 
-if [[ man = "new" ]]; then
+if [[ mvnv = "new" ]]; then
         mvn clean install
 else
         ./mvnw clean install
