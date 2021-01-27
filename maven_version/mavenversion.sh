@@ -4,8 +4,6 @@
 mvn --version > version.txt
 echo $(head -n 1 version.txt) > version1.txt
 var1=$(awk '{for (I=1;I<NF;I++) if ($I == "Maven") print $(I+1)}' version1.txt)
-#rm -rf version.txt version1.txt
-
 
 first=${var1%%.*}
 echo $first
@@ -20,3 +18,5 @@ then
 else
         echo "maven version is old"
 fi
+
+rm -rf version.txt version1.txt
