@@ -51,6 +51,7 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
         )
 
     # Iterate the string array using for loop
+    
     for val in "${StringArray[@]}"; do
        info "----------------------------------------------------------------------------------------------> ${val}"
 
